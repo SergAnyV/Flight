@@ -53,7 +53,7 @@ public class QuestionService {
         output.addAnswer(7, sevenQ.getResult());
         output.addAnswer(8, eightQ.getResult());
         output.addAnswer(9, nineQ.getResult());
-
+        System.out.println();
         // запись результатов в файл
         output.writeAnswers();
 
