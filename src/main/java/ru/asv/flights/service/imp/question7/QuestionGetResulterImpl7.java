@@ -2,7 +2,8 @@ package ru.asv.flights.service.imp.question7;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-import ru.asv.flights.repository.DataReadable;
+import ru.asv.flights.repository.DataRepositoty;
+import ru.asv.flights.service.QuestionGetResulter;
 
 
 /*Сколько рейсов компании American Airlines (UniqueCarrier ‘.....’) оказались задержаны на 60
@@ -13,17 +14,20 @@ import ru.asv.flights.repository.DataReadable;
 // в расчеты, хотя для него совокупная задержка составила 80 минут.
 @Component
 @Getter
-public class Question7 {
+public class QuestionGetResulterImpl7 implements QuestionGetResulter {
+
   private   String result;
+
     //конструктор обрабатывает и выдает результат
-    public Question7(DataReadable dataReaderCSV) {
-     result= String.valueOf(dataReaderCSV.getData().stream().
+    public QuestionGetResulterImpl7(DataRepositoty dataReaderCSV) {
+    this.result= String.valueOf(dataReaderCSV.getData().stream().
                 filter(s->s.getUniqueCarrier().equals("AA") && s.getCancelled().equals("0")
                         && !s.getDepDelay().isEmpty() && !s.getArrDelay().isEmpty() ).
                 filter(s->{
                     return  ((Integer.parseInt(s.getDepDelay())>=60) || (Integer.parseInt(s.getArrDelay()))>=60);
                 }).
                 count());
+
 
     }
 

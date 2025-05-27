@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import ru.asv.flights.service.QuestionService;
+import ru.asv.flights.service.imp.QuestionServiceImpl;
 
 @Configuration
 @ComponentScan("ru.asv.flights")
@@ -14,8 +15,8 @@ import ru.asv.flights.service.QuestionService;
 public class FlightApplication {
     public static void main(String[] args) {
         ApplicationContext context=new AnnotationConfigApplicationContext(FlightApplication.class);
-        QuestionService questionService=context.getBean(QuestionService.class);
-        questionService.calculAllResultsAndWriteToTheFile();
+        QuestionService questionService =context.getBean(QuestionServiceImpl.class);
+        questionService.writeAnswers();
     }
 
 }

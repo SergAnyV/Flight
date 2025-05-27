@@ -4,7 +4,7 @@ package ru.asv.flights.service.imp.question1;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-import ru.asv.flights.repository.DataReadable;
+import ru.asv.flights.repository.DataRepositoty;
 import ru.asv.flights.model.Flight;
 
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public class GenerateMapWithCancelledFlight {
 
     //конструктор собирает мапу с именами компаний и количеством ОТМЕНЕННЫХ рейсов
 
-    public GenerateMapWithCancelledFlight(DataReadable dataReaderCSV) {
+    public GenerateMapWithCancelledFlight(DataRepositoty dataReaderCSV) {
         for (Flight fo : dataReaderCSV.getData()) {
             if (fo.getCancelled().equals("1")) {
                 cancelledFlightsMap.merge(fo.getUniqueCarrier(), 1, Integer::sum);

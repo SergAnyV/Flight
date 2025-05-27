@@ -2,7 +2,7 @@ package ru.asv.flights.service.imp.question5;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-import ru.asv.flights.repository.DataReadable;
+import ru.asv.flights.repository.DataRepositoty;
 
 import ru.asv.flights.model.Flight;
 
@@ -21,7 +21,7 @@ public class GeneratorMapsAiroportDestAndOriginal {
 
     // формирование мап в конструкотре ключ- аэропорт(прибытия или отправления) , значение - количество осещений аэропорта
 
-    public GeneratorMapsAiroportDestAndOriginal(DataReadable dataReaderCSV) {
+    public GeneratorMapsAiroportDestAndOriginal(DataRepositoty dataReaderCSV) {
         for (Flight fo : dataReaderCSV.getData()) {
             if (fo.getDestAirportID()!=null&& !fo.getDestAirportID().trim().isEmpty()
                     && fo.getOriginAirportID()!=null&&!fo.getOriginAirportID().trim().isEmpty()) {

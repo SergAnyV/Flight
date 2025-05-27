@@ -2,7 +2,8 @@ package ru.asv.flights.service.imp.question8;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-import ru.asv.flights.repository.DataReadable;
+import ru.asv.flights.repository.DataRepositoty;
+import ru.asv.flights.service.QuestionGetResulter;
 
 
 import java.util.Comparator;
@@ -12,11 +13,11 @@ import java.util.Comparator;
 (TailNum). Например: .*/
 @Component
 @Getter
-public class Question8 {
+public class QuestionGetResulterImpl8 implements QuestionGetResulter {
     private String result;
 //конструктор обрабатывает и выдает результат
-    public Question8(DataReadable dataReaderCSV) {
-        result = dataReaderCSV.getData().stream().filter(fo -> fo.getCancelled().equals("0")
+    public QuestionGetResulterImpl8(DataRepositoty dataReaderCSV) {
+        this.result = dataReaderCSV.getData().stream().filter(fo -> fo.getCancelled().equals("0")
                         && fo.getCancelled().equals("0")
                         && !fo.getDepDelay().isEmpty() && !fo.getArrDelay().isEmpty() )
                 .filter(fo -> Integer.parseInt(fo.getDepDelay()) > 0)
@@ -27,7 +28,6 @@ public class Question8 {
                 ).get();
 
 
-        this.result = result;
     }
 
 

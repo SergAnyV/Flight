@@ -2,7 +2,7 @@ package ru.asv.flights.repository.impl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
-import ru.asv.flights.repository.OutputWritable;
+import ru.asv.flights.repository.ResultWriter;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Don't forget to call writeAnswers() at the end!
  */
 @Repository
-public class FormattedOutput implements OutputWritable {
+public class ResultWriterImpl implements ResultWriter {
 
     // ArrayList for holding answers to the questions.
     // Each index corresponds to question number minus 1,
@@ -24,7 +24,7 @@ public class FormattedOutput implements OutputWritable {
     private int numQuestions = 9;
     @Value("${formattedOutput.answerPath}")
     private String answerPath;
-    public FormattedOutput() {
+    public ResultWriterImpl() {
 
         answers = new ArrayList<>();
 

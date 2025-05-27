@@ -4,14 +4,14 @@ package ru.asv.flights.service.imp.question1;
 import lombok.Getter;
 
 import org.springframework.stereotype.Component;
-import ru.asv.flights.service.Questionable;
+import ru.asv.flights.service.QuestionGetResulter;
 
 
 import java.util.Map;
 
 @Component
 
-public class Questionable1 implements Questionable {
+public class QuestionGetResulterImpl1 implements QuestionGetResulter {
     @Getter
     private String NameOfCompany;
     @Getter
@@ -22,7 +22,7 @@ public class Questionable1 implements Questionable {
 рейсов (например: AA, 1.22%). Процентная доля вычисляется как отношение отмененных рейсов
 к общему числу совершенных рейсов. Ответ надо представить без округления, как есть.*/
 
-    Questionable1(GenerateMapWithCancelledFlight generateMapWithCancelledFlight, GenerateMapWithAllOfFlightsCompanies generateMapWithAllOfFlightsCompanies) {
+    QuestionGetResulterImpl1(GenerateMapWithCancelledFlight generateMapWithCancelledFlight, GenerateMapWithAllOfFlightsCompanies generateMapWithAllOfFlightsCompanies) {
         Map<String, Integer> cancelledMap = generateMapWithCancelledFlight.getCancelledFlightsMap();
         Map<String, Integer> allFlightsMap = generateMapWithAllOfFlightsCompanies.getMapAllFlightsCompanies();
         double maxpercentCancelledFlights = 0, temp;

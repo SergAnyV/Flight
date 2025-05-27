@@ -1,7 +1,7 @@
 package ru.asv.flights.service.imp.question4;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-import ru.asv.flights.repository.DataReadable;
+import ru.asv.flights.repository.DataRepositoty;
 import ru.asv.flights.model.Flight;
 
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import java.util.Map;
 public class GeneratorMapOfAirportBusy {
  private    Map<String,Integer> generatorMOAB=new HashMap<>();
 
-    public GeneratorMapOfAirportBusy(DataReadable dataReaderCSV) {
+    public GeneratorMapOfAirportBusy(DataRepositoty dataReaderCSV) {
         for (Flight fo: dataReaderCSV.getData()){
             generatorMOAB.merge(fo.getOriginAirportID(), 1, Integer::sum);
         }

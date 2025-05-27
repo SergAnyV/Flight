@@ -4,7 +4,7 @@ package ru.asv.flights.service.imp.question1;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-import ru.asv.flights.repository.DataReadable;
+import ru.asv.flights.repository.DataRepositoty;
 import ru.asv.flights.model.Flight;
 
 import java.util.HashMap;
@@ -21,7 +21,7 @@ public class GenerateMapWithAllOfFlightsCompanies {
 
 //конструктор собирает мапу с именами компаний и количеством совершенных рейсов
 
-    public GenerateMapWithAllOfFlightsCompanies(DataReadable dataReaderCSV) {
+    public GenerateMapWithAllOfFlightsCompanies(DataRepositoty dataReaderCSV) {
         for (Flight fo: dataReaderCSV.getData()){
             mapAllFlightsCompanies.merge(fo.getUniqueCarrier(), 1, Integer::sum);
 

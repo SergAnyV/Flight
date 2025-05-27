@@ -2,8 +2,8 @@ package ru.asv.flights.service.imp.question6;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-import ru.asv.flights.repository.DataReadable;
-import ru.asv.flights.service.Questionable;
+import ru.asv.flights.repository.DataRepositoty;
+import ru.asv.flights.service.QuestionGetResulter;
 import ru.asv.flights.service.imp.question5.GeneratorMapsAiroportDestAndOriginal;
 
 
@@ -11,10 +11,10 @@ import java.util.Map;
 
 @Component
 @Getter
-public class Questionable6 implements Questionable {
+public class QuestionGetResulter6 implements QuestionGetResulter {
     private String result;
 
-    public Questionable6(DataReadable dataReaderCSV) {
+    public QuestionGetResulter6(DataRepositoty dataReaderCSV) {
         GeneratorMapsAiroportDestAndOriginal mgADO = new GeneratorMapsAiroportDestAndOriginal(dataReaderCSV);
         Map<String, Integer> mapAiroprDest = mgADO.getMapAiroportDest();
         Map<String, Integer> mapAiroprtOrig = mgADO.getMapAiroportOriginal();
@@ -25,7 +25,7 @@ public class Questionable6 implements Questionable {
             if (mapAiroprtOrig.containsKey(airportKey)
                     && temp < dest.getValue() - mapAiroprtOrig.get(airportKey)) {
                 temp = dest.getValue() - mapAiroprtOrig.get(airportKey);
-                result = airportKey;
+                this.result = airportKey;
 
             }
 
